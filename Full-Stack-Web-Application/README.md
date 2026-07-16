@@ -1,16 +1,18 @@
-# React + Vite
+# Full-Stack Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Full-Stack Web Application for a selection of films and reviews, where you can nativate through all the films and see who left a review.
 
-Currently, two official plugins are available:
+# Screenshot
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Will be out soon
 
-## React Compiler
+# Description
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The goal of this application it's to allow join both front-end and back-end together, to allow users to navigate through pages, add films, leave reviews and see other's people reviews.
 
-## Expanding the ESLint configuration
+# Technologies used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Front-end: HTML5, CSS, React
+Back-end: Node.js, Express.js
+Database: MySQL
+Tools: Git, npm, vite, VSC
