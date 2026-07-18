@@ -5,3 +5,14 @@
 body {
   margin: 0;
 }
+
+.btn.btn-style {
+  background-color: #940C0C;
+  border-color: #940C0C;
+  color: white;
+}
+
+.btn.btn-style:hover {
+  background-color: #700909;
+  border-color: #700909;
+}

@@ -13,22 +13,22 @@ function MovieDetail() {
 
     function fetchMovie() {
 
-    axios.get(`/api/movies/${id}`)
-        .then(response => {
-            setMovie(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        axios.get(`/api/movies/${id}`)
+            .then(response => {
+                setMovie(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
-}
+    }
 
 
     useEffect(() => {
 
-    fetchMovie();
+        fetchMovie();
 
-}, [id]);
+    }, [id]);
 
 
     if (!movie) {
@@ -39,26 +39,62 @@ function MovieDetail() {
     return (
         <>
 
-            <h1>{movie.title}</h1>
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-8">
+                        <table className="table text-center my-5">
 
-            <p>{movie.description}</p>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h1>{movie.title}</h1>
+                                        <p>{movie.description}</p>
+                                    </th>
+
+                                    <th><h2>Recensioni</h2></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td></td>
+
+                                    <td>
+                                        {
+                                            movie.reviews.map(review => (
+                                                <ReviewCard
+                                                    key={review.id}
+                                                    review={review}
+                                                />
+                                            ))
+                                        }
+                                    </td>
 
 
-            <h2>Recensioni</h2>
+                                </tr>
+                            </tbody>
 
-            {
-                movie.reviews.map(review => (
-                    <ReviewCard
-                        key={review.id}
-                        review={review}
-                    />
-                ))
-            }
+                            <ReviewForm
+                                movieId={movie.id}
+                                fetchMovie={fetchMovie}
+                            />
 
-            <ReviewForm
-                movieId={movie.id}
-                fetchMovie={fetchMovie}
-            />
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
         </>
     );

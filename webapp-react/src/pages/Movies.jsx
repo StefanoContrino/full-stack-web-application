@@ -26,16 +26,43 @@ function Movies() {
     return (
         <>
 
-            <h1>Lista Film</h1>
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-8">
+                        <table className="table text-center my-5">
 
-            {
-                movies.map(movie => (
-                    <MovieCard
-                        key={movie.id}
-                        movie={movie}
-                    />
-                ))
-            }
+                            <thead>
+                                <tr>
+                                    <th><h1>Lista Film</h1></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+
+                                    <td>
+                                        {
+                                            movies.map(movie => (
+                                                <MovieCard
+                                                    key={movie.id}
+                                                    movie={movie}
+                                                />
+                                            ))
+                                        }
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
         </>
     );

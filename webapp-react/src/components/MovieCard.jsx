@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../index.css'
 
 function MovieCard({ movie }) {
 
@@ -8,8 +9,8 @@ function MovieCard({ movie }) {
 
             <p>{movie.description}</p>
 
-            <Link to={`/movies/${movie.id}`}>
-                Dettaglio
+            <Link className="btn btn-style" to={`/movies/${movie.id}`}>
+                Details
             </Link>
 
         </div>
