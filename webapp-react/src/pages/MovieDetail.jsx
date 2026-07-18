@@ -1,31 +1,39 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
 import ReviewCard from '../components/ReviewCard';
+import ReviewForm from '../components/ReviewForm';
 
 function MovieDetail() {
 
     const { id } = useParams();
 
+    const [movie, setMovie] = useState(null);
 
-    const movie = {
-        id: id,
-        title: 'Interstellar',
-        description: 'Un viaggio nello spazio e nel tempo'
-    };
+    function fetchMovie() {
 
-    const reviews = [
-    {
-        id: 1,
-        author: 'Mario',
-        vote: 5,
-        text: 'Film incredibile'
-    },
-    {
-        id: 2,
-        author: 'Anna',
-        vote: 4,
-        text: 'Molto interessante'
+    axios.get(`/api/movies/${id}`)
+        .then(response => {
+            setMovie(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+}
+
+
+    useEffect(() => {
+
+    fetchMovie();
+
+}, [id]);
+
+
+    if (!movie) {
+        return <h1>Caricamento...</h1>;
     }
-];
 
 
     return (
@@ -35,18 +43,22 @@ function MovieDetail() {
 
             <p>{movie.description}</p>
 
-            <p>ID film: {movie.id}</p>
 
             <h2>Recensioni</h2>
 
-                {
-                    reviews.map(review => (
-                        <ReviewCard
-                            key={review.id}
-                            review={review}
-                        />
-                    ))
-                }
+            {
+                movie.reviews.map(review => (
+                    <ReviewCard
+                        key={review.id}
+                        review={review}
+                    />
+                ))
+            }
+
+            <ReviewForm
+                movieId={movie.id}
+                fetchMovie={fetchMovie}
+            />
 
         </>
     );

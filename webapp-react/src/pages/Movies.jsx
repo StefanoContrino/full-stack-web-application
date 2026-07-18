@@ -1,25 +1,26 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import MovieCard from '../components/MovieCard';
 
 
 function Movies() {
 
-    const movies = [
-        {
-            id: 1,
-            title: 'Interstellar',
-            description: 'Un viaggio nello spazio e nel tempo'
-        },
-        {
-            id: 2,
-            title: 'Inception',
-            description: 'Un ladro entra nei sogni delle persone'
-        },
-        {
-            id: 3,
-            title: 'Matrix',
-            description: 'Una realtà nascosta dietro il mondo conosciuto'
-        }
-    ];
+    const [movies, setMovies] = useState([]);
+
+
+    useEffect(() => {
+
+        axios.get('/api/movies')
+            .then(response => {
+                console.log(response.data);
+                setMovies(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+    }, []);
 
 
     return (
@@ -29,7 +30,7 @@ function Movies() {
 
             {
                 movies.map(movie => (
-                    <MovieCard 
+                    <MovieCard
                         key={movie.id}
                         movie={movie}
                     />
